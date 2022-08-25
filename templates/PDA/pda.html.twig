@@ -10,7 +10,7 @@
     $(document).ready( function () {
         var table = $('#tablePDA').DataTable({
         "paging":   false,
-        "ordering": false,
+        "ordering": true,
         "info":     false,
         'searching': true,
         });
@@ -33,20 +33,34 @@
     <table class="mb-0 table table-bordered table-striped" id="tablePDA">
         <thead>
             <tr>
-                <th>#</th>
+                <th>N° PDA</th>
                 <th>IMEI</th>
                 <th>Numéro de Série</th>
+                <th>Type</th>
                 <th>Société</th>
+                <th>N° PDA du Site</th>
+                <th>Société Temporaire</th>
+                <th>N° SIM</th>
+                <th>N° Téléphone</th>
+                <th>Prénom</th>
+                <th>Nom</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for pda in listPDA %}
-            <tr>
-                <th scope="row">{{ pda.id }}</th>
+            <tr style="background-color: {{ pda.company.backColorCode }}; color: {{ pda.company.textColorCode }};">
+                <th scope="row">{{ pda.noPDA }}</th>
                 <td>{{ pda.imei }}</td>
                 <td>{{ pda.serialNumber }}</td>
-                <td></td>
+                <td>{{ pda.type.name }}</td>
+                <td>{{ pda.company.name }}</td>
+                <td>{{ pda.noSitePDA }}</td>
+                <td>{{ pda.companyTemp.name }}</td>
+                <td>{{ pda.sim.noSIM }}</td>
+                <td>{{ pda.sim.noPhone }}</td>
+                <td>{{ pda.firstName }}</td>
+                <td>{{ pda.lastName }}</td>
                 <td></td>
             </tr>
             {% endfor %}
