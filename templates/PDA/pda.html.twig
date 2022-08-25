@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PDA Livraison
+{% endblock %}
+
+{% block page %}Liste des PDA{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        var table = $('#tablePDA').DataTable({
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        'searching': true,
+        });
+    } );
+</script>
+{% endblock %}
+
+{% block actionsPage %}
+	{# <div class="d-inline-block dropdown">
+		<a type="button" class="btn mr-2 mb-2 btn-danger" href="{{ path("impVehiclePDF", {'registration': vehicle.registration }) }}">
+			<span class="btn-icon-wrapper pr-2 opacity-7">
+				<i class="fa fa-print fa-w-20"></i>
+			</span>
+			Imprimer la Fiche Véhicule
+		</a>
+	</div> #}
+{% endblock %}
+
+{% block body %}
+    <table class="mb-0 table table-bordered table-striped" id="tablePDA">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>IMEI</th>
+                <th>Numéro de Série</th>
+                <th>Société</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pda in listPDA %}
+            <tr>
+                <th scope="row">{{ pda.id }}</th>
+                <td>{{ pda.imei }}</td>
+                <td>{{ pda.serialNumber }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

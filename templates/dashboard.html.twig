@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block page %}Dashboard{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        var table = $('#tablePDA').DataTable({
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+        'searching': true,
+        });
+    } );
+</script>
+{% endblock %}
+
+{% block actionsPage %}
+	{# <div class="d-inline-block dropdown">
+		<a type="button" class="btn mr-2 mb-2 btn-danger" href="{{ path("impVehiclePDF", {'registration': vehicle.registration }) }}">
+			<span class="btn-icon-wrapper pr-2 opacity-7">
+				<i class="fa fa-print fa-w-20"></i>
+			</span>
+			Imprimer la Fiche Véhicule
+		</a>
+	</div> #}
+{% endblock %}
+
+{% block body %}
+{% endblock %}
